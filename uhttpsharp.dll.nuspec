@@ -6,15 +6,16 @@
 		<title>uHttpSharp</title>
 		<authors>Shani Elharrar, Joe White, Hüseyin Uslu</authors>
 		<owners>Shani Elharrar, Joe White, Hüseyin Uslu</owners>
-		<licenseUrl>https://raw.github.com/shanielh/uHttpSharp/master/LICENSE.txt</licenseUrl>
-		<projectUrl>https://github.com/shanielh/uHttpSharp</projectUrl>
+		<licenseUrl>https://raw.github.com/Code-Sharp/uHttpSharp/master/LICENSE.txt</licenseUrl>
+		<projectUrl>https://github.com/Code-Sharp/uHttpSharp</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>A very lightweight &amp; simple embedded http server for c#</description>
 		<releaseNotes>Initial NuGet Release.</releaseNotes>
 		<copyright>Copyright 2014</copyright>
 		<tags>http server microframeworks</tags>
 		<dependencies>
-			<dependency id="Newtonsoft.Json" version="6.0.6" />
+			<dependency id="Microsoft.CSharp" version="4.5.0" />
+			<dependency id="Newtonsoft.Json" version="12.0.2" />
 		</dependencies>
 	</metadata>
 	<files>

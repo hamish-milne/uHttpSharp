@@ -37,13 +37,12 @@ namespace uhttpsharp
         private const string CrLf = "\r\n";
         private static readonly byte[] CrLfBuffer = Encoding.UTF8.GetBytes(CrLf);
 
-        private static readonly ILog Logger = LogProvider.GetCurrentClassLogger();
+        private static readonly ILog Logger = LogProvider.For<HttpClientHandler>();
         
         private readonly IClient _client;
         private readonly Func<IHttpContext, Task> _requestHandler;
         private readonly IHttpRequestProvider _requestProvider;
         private readonly EndPoint _remoteEndPoint;
-        private DateTime _lastOperationTime;
         private Stream _stream;
 
         public HttpClientHandler(IClient client, Func<IHttpContext, Task> requestHandler, IHttpRequestProvider requestProvider)
@@ -56,8 +55,6 @@ namespace uhttpsharp
             Logger.InfoFormat("Got Client {0}", _remoteEndPoint);
 
             Task.Factory.StartNew(Process);
-
-            UpdateLastOperationTime();
         }
 
         private async Task InitializeStream()
@@ -87,8 +84,6 @@ namespace uhttpsharp
 
                     if (request != null)
                     {
-                        UpdateLastOperationTime();
-
                         var context = new HttpContext(request, _client.RemoteEndPoint);
 
                         Logger.InfoFormat("{1} : Got request {0}", request.Uri, _client.RemoteEndPoint);
@@ -108,8 +103,6 @@ namespace uhttpsharp
                                 _client.Close();
                             }
                         }
-
-                        UpdateLastOperationTime();
                     }
                     else
                     {
@@ -168,20 +161,6 @@ namespace uhttpsharp
         {
             _client.Close();
         }
-
-        public DateTime LastOperationTime
-        {
-            get
-            {
-                return _lastOperationTime;
-            }
-        }
-
-        private void UpdateLastOperationTime()
-        {
-            // _lastOperationTime = DateTime.Now;
-        }
-
     }
 
     internal class NotFlushingStream : Stream

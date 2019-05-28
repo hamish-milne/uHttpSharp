@@ -9,7 +9,7 @@ namespace uhttpsharpdemo.Handlers
 {
     public class TimingHandler : IHttpRequestHandler
     {
-        private static readonly ILog Logger = LogProvider.GetCurrentClassLogger();
+        private static readonly ILog Logger = LogProvider.For<TimingHandler>();
 
         public async Task Handle(IHttpContext context, Func<Task> next)
         {

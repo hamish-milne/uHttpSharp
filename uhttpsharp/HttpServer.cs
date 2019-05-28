@@ -28,7 +28,7 @@ namespace uhttpsharp
 {
     public sealed class HttpServer : IDisposable
     {
-        private static readonly ILog Logger = LogProvider.GetCurrentClassLogger();
+        private static readonly ILog Logger = LogProvider.For<HttpServer>();
 
         private bool _isActive;
 

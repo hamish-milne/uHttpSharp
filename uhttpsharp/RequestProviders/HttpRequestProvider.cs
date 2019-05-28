@@ -14,7 +14,7 @@ namespace uhttpsharp.RequestProviders
     {
         private static readonly char[] Separators = { '/' };
 
-        private static readonly ILog Logger = LogProvider.GetCurrentClassLogger();
+        private static readonly ILog Logger = LogProvider.For<HttpRequestProvider>();
         
         public async Task<IHttpRequest> Provide(IStreamReader reader)
         {
